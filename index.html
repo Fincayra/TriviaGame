@@ -19,35 +19,43 @@
 
 <body>
 
+    <!-- Start section -->
     <div class="startbox">
         <h1>Welcome to the trivia game!</h1>
 
         <a href="#">start quiz</a>
     </div>
 
+    <!-- Quiz section-->
     <div class="quizbox">
 
         <span id="countdown">0</span><br>
 
         <button id="start-game">Start!</button>
-        
-        <div class="question1">
-            <h2>Questions will go here</h2>
+
+        <div class="quiz">
+            <h2>Question title</h2>
+
+            <ul>
+                <li>choice</li>
+                <li>choice</li>
+                <li>choice</li>
+                <li>choice</li>
+            </ul>
+
+            <button><a href="#">Submit</a></button>
         </div>
 
-        <button class="btn">Answer 1</button>
-        <button class="btn">Answer 2</button>
-        <button class="btn">Answer 3</button>
-        <button class="btn">Answer 4</button>
-        
-        <br>
+        <div class="summary">
+            <h2>Congrats!</h2>
+            <p>You've scored x out of y correctly!</p>
+        </div>
 
-        <button>Submit</button>
     </div>
-
 
     <!-- Javascript -->
     <script src="assets/javascript/app.js"></script>
 
 </body>
+
 </html>
