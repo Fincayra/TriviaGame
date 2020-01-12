@@ -19,34 +19,35 @@
 
 <body>
 
-    <div class="box">
+    <div class="startbox">
+        <h1>Welcome to the trivia game!</h1>
+
+        <a href="#">start quiz</a>
+    </div>
+
+    <div class="quizbox">
+
+        <span id="countdown">0</span><br>
+
+        <button id="start-game">Start!</button>
+        
         <div class="question1">
-            <h2>What's your favorite disney princess?</h2>
+            <h2>Questions will go here</h2>
         </div>
 
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options" id="option1" checked> Active
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option2"> Radio
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options" id="option3"> Radio
-            </label>
-        </div>
-
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+        <button class="btn">Answer 4</button>
+        
         <br>
 
         <button>Submit</button>
     </div>
 
-    <script>
 
+    <!-- Javascript -->
+    <script src="assets/javascript/app.js"></script>
 
-
-
-    </script>
 </body>
-
 </html>
