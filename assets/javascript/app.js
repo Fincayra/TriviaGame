@@ -45,21 +45,23 @@
         showQuestion();
     });
 
-    // // turns the button blue on hover
-    //     $(".quiz ul").on("click", "li", function(){
-    //     $(this).find("button").addClass("clicked");
-    // });
-
-    // // Selecting an answer
-    // $(".quiz a").click(function(e){
-    //     e.preventDefault();
-    //     if($("btn.selected").length){
-    //         let guess = $("btn.selected").attr("[i]");
-    //         console.log(guess);
-    //         } else {
-    //         alert("please select an answer");
-    //     }
-    // });
+    // highlights answer
+    $(".quiz ul").on("click", "li", function(){
+        $(".selected").removeClass("selected");
+        $(this).addClass("selected");
+    });
+    
+    // tells player to select an answer on submit
+    $(".quiz a").click(function(e){
+        e.preventDefault();
+        if($("li.selected").length){
+            let guess = $("li.selected").attr("id");
+            // console.log(guess);
+            checkAnswer(guess);
+        } else {
+            alert("Please select an answer.");
+        }
+    });
 
 });
 
@@ -69,14 +71,28 @@
     $(".quiz h2").text(question.title);
     $(".quiz ul").html("");
     for(var i = 0; i < question.answers.length; i ++){
-        $(".quiz ul").append("<input type='radio' name='btn' id='" + i + "'>" + question.answers[i] + "</input>");
+        $(".quiz ul").append("<li id='"+i+"'>"+ question.answers[i] + "</li>");
     };
 }
 
-    function checkAnswer() {
+    // updates the score
+    function checkAnswer(guess) {
+        let question = questions[currentQuestion];
+        if(question.correct == guess){
+            score++;
+        }
+        currentQuestion++;
+        if(currentQuestion >= questions.length){
+            showSummary();
+        } else {
+            showQuestion();
+        }
 
 }
-
+    // hides the quiz and shows the summary page
     function showSummary() {
-
+        $(".quiz").hide();
+        $(".summary").show();
+    // shows the total score
+        $(".summary p").text("You scored " +score+ " out of " +questions.length+ "!");
 }
