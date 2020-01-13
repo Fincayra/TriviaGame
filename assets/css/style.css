@@ -10,8 +10,24 @@ body {
     display: none;
 } */
 
-.selected {
+.quiz ul {
+    list-style: none;
+}
+
+.quiz li {
+    margin: 0 auto;
+    cursor: pointer;
     background-color: yellow;
+    border: 2px solid orange;
+    width: 200px;
+}
+
+li:hover {
+    background-color: red;
+}
+
+.selected {
+    background-color: white;
 }
 
 .startbox {
