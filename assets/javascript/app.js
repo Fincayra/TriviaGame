@@ -1,27 +1,49 @@
 var score = 0;
 var currentQuestion = 0;
+var clockTimer = 60;
 
 // trivia q&a's
 var questions = [{
-    title: "which hobbit is my favorite?",
-    answers: ['sam', 'pippin', 'frodo', 'merry'],
-    correct: 0
-}, {
-    title: "who is the ranger in the party?",
-    answers: ['frodo', 'gimli', 'legolas', 'aragorn'],
+    title: "What is the name of the ferry the hobbits use to escape the Black Riders in 'The Fellowship of the Ring'?",
+    answers: ['Cranberry Ferry', 'Blackberry Ferry', 'Huckleberry Ferry', 'Bucklebury Ferry'],
     correct: 3
 }, {
-    title: "who is arwen's father?",
-    answers: ['barithor', 'legolas', 'elrond', 'sauron'],
+    title: "In 'The Fellowship of the Ring', Bilbo gives Frodo a sword for protection. What is the name of that sword?",
+    answers: ['Mithril', 'Thrasher', 'Sting', 'Slice'],
     correct: 2
 }, {
-    title: "who is the white wizard?",
-    answers: ['gimli', 'sarumon', 'isildor', 'gandolf'],
+    title: "Who is the first voice we hear in the beginning of 'The Fellowship of the Ring'?",
+    answers: ['Arwen', 'Gandalf', 'Eowyn', 'Galadriel'],
+    correct: 3
+}, {
+    title: "What is the name of the Ent who carries Pippin and Merry through Fangorn Forest?",
+    answers: ['Treebeard', 'Greybranch', 'Quickbeam', 'Barktree'],
+    correct: 0
+}, {
+    title: "In 'The Return of the King', who kills the Witch King of Angmar?",
+    answers: ['Frodo', 'Aragorn', 'Eowyn', 'Arwen'],
+    correct: 2
+}, {
+    title: "After Sauron, who kept the One Ring?",
+    answers: ['Isildur', 'Elrond', 'Gollum', 'Saruman'],
+    correct: 0
+}, {
+    title: "What is the name of the inn where Frodo was supposed to meet Gandolf in 'The Fellowship of the Ring'?",
+    answers: ['The Laughing Boar', 'The Green Dragon', 'The Prancing Pony', 'The Salty Toad'],
+    correct: 2
+}, {
+    title: "Who says 'It will be the farthest away from home I've ever been.'?",
+    answers: ['Pippin', 'Merry', 'Frodo', 'Sam'],
     correct: 3
 }];
 
 // starts game
 $(document).ready(function () {
+
+// loops through the question array
+// for (var i = 0, i = questions.length; i < 3; i++) {
+//     var obj = questions.length[i]
+// ;}
 
 // hides the quiz on start-up
     $(".quizbox").hide();
@@ -40,8 +62,8 @@ $(document).ready(function () {
         showQuestion();
     });
 
-// countdown clock
-    var clockTimer = 30;
+    // countdown clock
+    var clockTimer = 60;
     var startTime = setInterval(function () {
         clockTimer--;
         document.getElementById("countdown").textContent = clockTimer; if (clockTimer < -1)
@@ -51,7 +73,7 @@ $(document).ready(function () {
             clearInterval(startTime);
             $(".quiz").hide();
             $(".fail").show();
-            $("#countdown").remove();
+            $("#countdown").hide();
         }
     }, 1000);
 
@@ -61,7 +83,8 @@ $(document).ready(function () {
         $(".startbox").show();
         $(".quiz").show();
         $(".fail").hide();
-    })
+        $("#countdown").show();
+    });
 
 // "button" customization
     $(".quiz ul").on("click", "li", function () {
@@ -83,7 +106,7 @@ $(document).ready(function () {
 
 });
 
-// shows the first trivia question / creates radio buttons
+// shows the first trivia question / creates "buttons"
 function showQuestion() {
     let question = questions[currentQuestion];
     $(".quiz h2").text(question.title);
@@ -115,22 +138,34 @@ function showSummary() {
     $(".summary").show();
 // shows the total score
     $(".summary p").text("You scored " + score + " out of " + questions.length + "!");
+
     
 // returns player back to the main page
     $(".summary a").click(function(e) {
+        e.preventDefault();
         $(".summary").hide();
-        $(".startbox").show();
-    });
-}
-
-// restarts game??
-function playAgain() {
-    $(".startbox a").click(function(e){
-        a.preventDefault();
-        $(".startbox").hide();
-        $(".quizbox").show();
+        $(".quiz").show();
+        $("#countdown").show();
+        score = 0;
+        currentQuestion = 0;
+        restartQuiz();
         showQuestion();
 
-        score = 0;
+        document.getElementById("countdown").textContent = clockTimer; if (clockTimer < -1)
+            clearInterval(startTime);
+// if clock runs out and no answer is selected
+        else if (clockTimer === -1) {
+            clearInterval(startTime);
+            $(".quiz").hide();
+            $(".fail").show();
+            $("#countdown").hide();
+        
+    }
+}
+
+// restarts game timer?
+function resetTimer() {
+
     });
 }
+
