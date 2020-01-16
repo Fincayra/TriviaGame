@@ -159,13 +159,6 @@ function showSummary() {
             $(".quiz").hide();
             $(".fail").show();
             $("#countdown").hide();
-        
-    }
-}
-
-// restarts game timer?
-function resetTimer() {
-
+        }
     });
 }
-
